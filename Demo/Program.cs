@@ -3,6 +3,7 @@ using IoC.Implementation;
 
 var services = new ServiceCollection();
 
+services.AddSingleton<ExternalDependency>();
 services.AddSingleton<Example>();
 
 var serviceProvider = services.Build();

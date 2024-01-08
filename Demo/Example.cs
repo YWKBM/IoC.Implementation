@@ -5,11 +5,26 @@ using System.Threading.Tasks;
 
 namespace Demo
 {
-    public class Example
+    public class ExternalDependency
     {
         public void Print()
         {
-            Console.WriteLine("example text");
+            Console.WriteLine("external dependency text");
+        }
+    }
+
+    public class Example
+    {
+        private readonly ExternalDependency _externalDependency;
+
+        public Example(ExternalDependency externalDependency)
+        {
+            _externalDependency = externalDependency;
+        }
+
+        public void Print()
+        {
+            _externalDependency.Print();
         }
     }
 }

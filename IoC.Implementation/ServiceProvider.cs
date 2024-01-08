@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Reflection;
 
 namespace IoC.Implementation;
@@ -48,7 +49,7 @@ internal class ServiceProvider : IServiceProvider
         }
 
         var requiredInstance = parametrInstances.Count > 0 
-            ? Activator.CreateInstance(type, parametrInstances) 
+            ? Activator.CreateInstance(type, BindingFlags.Instance | BindingFlags.Public | BindingFlags.CreateInstance, null, parametrInstances.ToArray(), CultureInfo.CurrentCulture) 
             : Activator.CreateInstance(type);
 
         if (requiredInstance == null)
