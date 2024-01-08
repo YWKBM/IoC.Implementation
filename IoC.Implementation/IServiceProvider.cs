@@ -4,5 +4,5 @@ public interface IServiceProvider
 {
     T GetService<T>();
     
-    object GetServiceType(Type type);
+    object GetService(Type type);
 }

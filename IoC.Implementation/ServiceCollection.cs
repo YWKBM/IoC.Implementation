@@ -26,7 +26,7 @@ public class ServiceCollection
 {
     private readonly Dictionary<Type, ServiceInfo> _services = new();
 
-    //by realization
+    //by implementation
     public void AddSingleton<T>()
     {
         var type = typeof(T);
@@ -59,7 +59,7 @@ public class ServiceCollection
 
     public IServiceProvider Build()
     {
-        return new ServiceProvider();
+        return new ServiceProvider(_services);
     }
 
     private void AddSingleton(Type type, Type implementation) =>
